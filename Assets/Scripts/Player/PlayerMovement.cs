@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
    private float _verticalVelocity;
 
    // Can wall jump
-   private bool _wallJump;
+   private bool _slide = false;
 
    private void Awake()
    {
@@ -57,10 +57,10 @@ public class PlayerMovement : MonoBehaviour
    // Define player speed based on his status
    private float getCurrentSpeed()
    {
-      if (_playerInputs.crouch && !_isGrounded)
-         return crouchSpeed;
       if (_playerInputs.sprint)
          return sprintSpeed;
+      if (_playerInputs.crouch)
+         return crouchSpeed;
       return runSpeed;
    }
 
@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
       float x = _playerInputs.moveDirection.x;
       float z = _playerInputs.moveDirection.y;
       Vector3 tmpMove = _playerTransform.right * x + _playerTransform.forward * z;
-      if (_isGrounded)
+      if (_isGrounded && !_slide)
       {
          _verticalVelocity = -10;
          _moveDirection = tmpMove;
@@ -118,11 +118,22 @@ public class PlayerMovement : MonoBehaviour
 
    private void OnControllerColliderHit(ControllerColliderHit hit)
    {
-      if (!_isGrounded && hit.normal.y < 0.1f && _playerInputs.jump)
+      // Check if we hit a wall and if player want to jump
+      if (hit.normal.y < 0.1f && _playerInputs.jump)
       {
-         Debug.DrawRay(hit.point, hit.normal, Color.red, 1.5f);
-         _verticalVelocity = jumpForce;
-         _moveDirection = Vector3.Reflect(_moveDirection, hit.normal) * _speed;
+         // if (Vector3.Angle(_moveDirection, hit.normal) > 170f)
+         // {
+         //    Debug.Log("Climb");
+         // }
+         // else
+         // {
+         // If not on the ground make the player jump on the wall
+         if (!_isGrounded)
+         {
+            _verticalVelocity = jumpForce;
+            _moveDirection = Vector3.Reflect(_moveDirection, hit.normal) * _speed;
+            //}
+         }
       }
    }
    private Vector3 wallJumpAngle()

@@ -205,6 +205,17 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""0674b983-8665-4f0f-be5a-6c49a80bfe17"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""29a44f68-a66e-4710-b730-5023df0344b6"",
                     ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": ""Press(behavior=2)"",
