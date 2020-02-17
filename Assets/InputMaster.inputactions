@@ -22,17 +22,25 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Mouse Position",
-                    "type": "Button",
-                    "id": "27c76c4c-9b35-47a9-b05a-a55c59e88330",
+                    "name": "Camera Rotation",
+                    "type": "PassThrough",
+                    "id": "b989038e-3163-49bf-89f3-b8118b5d0c7c",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 },
                 {
-                    "name": "Camera Rotation",
+                    "name": "Crouch",
                     "type": "Button",
-                    "id": "b989038e-3163-49bf-89f3-b8118b5d0c7c",
+                    "id": "45b75af4-3083-4f22-a32f-bab2d68182f3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Sprint",
+                    "type": "Button",
+                    "id": "4b15472e-4b10-44fb-818b-233aa322c22d",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
@@ -162,23 +170,34 @@
                 },
                 {
                     "name": "",
-                    "id": "34564b40-66da-4633-8311-29f52c48dd0b",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard and Mouse",
-                    "action": "Mouse Position",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "41df376b-179b-42cc-b3c5-e2438182c939",
                     "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and Mouse",
                     "action": "Camera Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "629d15fc-35f8-4237-a8e5-ecb749ef6c61",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "29a44f68-a66e-4710-b730-5023df0344b6",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
