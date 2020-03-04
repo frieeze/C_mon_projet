@@ -17,8 +17,8 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
     public Status playerStatus { get; private set; }
     public float crouchSpeed = 6f;
-    public float runSpeed = 8f;
-    public float sprintSpeed = 12f;
+    public float runSpeed = 10f;
+    public float sprintSpeed = 15f;
     public float groundDistance = 0.4f;
     public float jumpForce = 5f;
     public float downGravity = 5f;
@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
             return Status.idle;
         if (_isGrounded)
         {
-            if (playerInputs.crouch && _speed > 10)
+            if (playerInputs.crouch && _speed > 9)
                 return Status.slide;
             if (playerInputs.crouch)
                 return Status.crouch;
@@ -78,6 +78,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (playerStatus == Status.crouch)
             return crouchSpeed;
+        if (playerInputs.sprint)
+            return sprintSpeed;
         return runSpeed;
     }
 
@@ -127,18 +129,6 @@ public class PlayerMovement : MonoBehaviour
         return playerInputs.jump && _isGrounded;
     }
 
-    private bool isSliding()
-    {
-        return (playerInputs.crouch && (_speed > 10));
-    }
-
-    private void resetGravity()
-    {
-        if (_isGrounded && _velocity.y < 0)
-        {
-            _velocity = Physics.gravity;
-        }
-    }
 
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -149,10 +139,5 @@ public class PlayerMovement : MonoBehaviour
             _verticalVelocity = jumpForce;
             _moveDirection = Vector3.Reflect(_moveDirection, hit.normal) * _speed;
         }
-    }
-
-    private Vector3 wallJumpAngle()
-    {
-        return Vector3.zero;
     }
 }
