@@ -4,11 +4,11 @@ namespace Level_1
 {
     public class Finish : MonoBehaviour
     {
-        [SerializeField] private Timer timerController;
+        [SerializeField] private LevelController levelController;
 
         private void OnTriggerEnter(Collider other)
         {
-            timerController.StopTimer();
+            levelController.StopTimer();
         }
     }
 }

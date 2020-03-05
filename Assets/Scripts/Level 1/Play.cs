@@ -5,11 +5,11 @@ namespace Level_1
 {
     public class Play : MonoBehaviour
     {
-        [SerializeField] private Timer timerController;
+        [SerializeField] private LevelController levelController;
 
         private void OnTriggerEnter(Collider other)
         {
-            timerController.StartTimer();
+            levelController.StartTimer();
         }
     }
 }
