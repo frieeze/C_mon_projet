@@ -4,7 +4,7 @@ namespace Player
 {
     public class MouseLook : MonoBehaviour
     {
-        public float mouseSensitivity = 50;
+        public float mouseSensitivity = 30;
 
         public Transform playerBody;
         private bool _isInMenu;
