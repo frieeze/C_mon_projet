@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using Player;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace Level_1
 {
@@ -15,12 +12,13 @@ namespace Level_1
         [SerializeField] private Canvas endScreen;
 
         private float _timer;
-        private bool _started = false;
+        private bool _started;
 
         private void Awake()
         {
             timerDisplay.enabled = false;
             endScreen.enabled = false;
+            Cursor.visible = false;
         }
 
         private void Update()
@@ -43,6 +41,12 @@ namespace Level_1
         {
             _started = false;
             levelFinished();
+        }
+
+        public void resetTimer()
+        {
+            _started = false;
+            _timer = 0f;
         }
 
         private void levelFinished()
